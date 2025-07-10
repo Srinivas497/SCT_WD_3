@@ -1,0 +1,118 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Development Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Instructions Screen -->
+        <div id="instructions" class="screen active">
+            <div class="instructions-card">
+                <h1>🚀 Frontend Development Quiz</h1>
+                <div class="instructions-content">
+                    <h2>📋 Instructions</h2>
+                    <ul>
+                        <li><strong>Total Questions:</strong> 15 questions covering HTML, CSS, and JavaScript</li>
+                        <li><strong>Question Types:</strong>
+                            <ul>
+                                <li>Questions 1-5: Single Choice (1 correct answer)</li>
+                                <li>Questions 6-10: Multiple Choice (select all correct answers)</li>
+                                <li>Questions 11-15: Fill in the Blanks</li>
+                            </ul>
+                        </li>
+                        <li><strong>Scoring:</strong> Each question is worth 1 point</li>
+                        <li><strong>Time:</strong> No time limit - take your time to think</li>
+                        <li><strong>Navigation:</strong> Use Next/Previous buttons to navigate</li>
+                        <li><strong>Review:</strong> You can review your answers at the end</li>
+                    </ul>
+                    <div class="difficulty-badge">
+                        <span class="badge intermediate">Intermediate Level</span>
+                    </div>
+                </div>
+                <button id="startQuiz" class="btn btn-primary">Start Quiz</button>
+            </div>
+        </div>
+
+        <!-- Quiz Screen -->
+        <div id="quiz" class="screen">
+            <div class="quiz-header">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="quiz-info">
+                    <span id="questionNumber">Question 1 of 15</span>
+                    <span id="questionType" class="question-type">Single Choice</span>
+                </div>
+            </div>
+
+            <div class="quiz-content">
+                <div class="question-card">
+                    <h2 id="questionText">Loading question...</h2>
+                    <div id="answerOptions" class="answer-options">
+                        <!-- Dynamic content -->
+                    </div>
+                </div>
+
+                <div class="quiz-navigation">
+                    <button id="prevBtn" class="btn btn-secondary">Previous</button>
+                    <button id="nextBtn" class="btn btn-primary">Next</button>
+                    <button id="submitBtn" class="btn btn-success" style="display: none;">Submit Quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results" class="screen">
+            <div class="results-card">
+                <div class="score-display">
+                    <h1>🎉 Quiz Complete!</h1>
+                    <div class="score-circle">
+                        <span id="finalScore">0/15</span>
+                        <span class="score-text">Score</span>
+                    </div>
+                    <div id="scoreMessage" class="score-message"></div>
+                </div>
+
+                <div class="results-breakdown">
+                    <h3>📊 Results Breakdown</h3>
+                    <div class="breakdown-stats">
+                        <div class="stat">
+                            <span class="stat-label">Single Choice:</span>
+                            <span id="singleScore">0/5</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Multiple Choice:</span>
+                            <span id="multipleScore">0/5</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-label">Fill in the Blanks:</span>
+                            <span id="fillScore">0/5</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button id="showAnswers" class="btn btn-info">Review Answers</button>
+                    <button id="restartQuiz" class="btn btn-primary">Restart Quiz</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Answer Review Screen -->
+        <div id="answerReview" class="screen">
+            <div class="review-header">
+                <h2>📝 Answer Review</h2>
+                <button id="backToResults" class="btn btn-secondary">Back to Results</button>
+            </div>
+            <div id="reviewContent" class="review-content">
+                <!-- Dynamic content -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

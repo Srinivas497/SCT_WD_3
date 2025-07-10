@@ -1,0 +1,460 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    color: #333;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.screen {
+    display: none;
+    width: 100%;
+    animation: fadeIn 0.5s ease-in;
+}
+
+.screen.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Instructions Screen */
+.instructions-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.instructions-card h1 {
+    color: #667eea;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+}
+
+.instructions-content {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.instructions-content h2 {
+    color: #333;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.instructions-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.instructions-content li {
+    margin-bottom: 15px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.instructions-content li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.instructions-content ul ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+.instructions-content ul ul li:before {
+    content: "•";
+    color: #667eea;
+}
+
+.difficulty-badge {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.badge {
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+.badge.intermediate {
+    background: linear-gradient(45deg, #ff9a9e, #fecfef);
+    color: #333;
+}
+
+/* Quiz Screen */
+.quiz-header {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.progress-bar {
+    background: #e0e0e0;
+    height: 8px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #667eea, #764ba2);
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.quiz-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.question-type {
+    background: #667eea;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 15px;
+    font-size: 0.9em;
+}
+
+.quiz-content {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.question-card h2 {
+    color: #333;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.answer-options {
+    margin-bottom: 30px;
+}
+
+.option {
+    background: #f8f9fa;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.option:hover {
+    border-color: #667eea;
+    background: #f0f4ff;
+}
+
+.option.selected {
+    border-color: #667eea;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+}
+
+.option input[type="radio"],
+.option input[type="checkbox"] {
+    margin: 0;
+}
+
+.fill-blank-container {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 15px;
+}
+
+.fill-blank-question {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.blank-input {
+    background: white;
+    border: 2px solid #667eea;
+    border-radius: 5px;
+    padding: 8px 12px;
+    font-size: 1em;
+    min-width: 100px;
+    margin: 0 5px;
+}
+
+.blank-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+.quiz-navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Buttons */
+.btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+.btn-success {
+    background: linear-gradient(45deg, #28a745, #20c997);
+    color: white;
+}
+
+.btn-success:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(40, 167, 69, 0.3);
+}
+
+.btn-info {
+    background: linear-gradient(45deg, #17a2b8, #138496);
+    color: white;
+}
+
+.btn-info:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(23, 162, 184, 0.3);
+}
+
+/* Results Screen */
+.results-card {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.score-display h1 {
+    color: #667eea;
+    margin-bottom: 30px;
+}
+
+.score-circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.score-text {
+    font-size: 0.6em;
+    opacity: 0.9;
+}
+
+.score-message {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+
+.results-breakdown {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 25px;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.results-breakdown h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.breakdown-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background: white;
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.stat-label {
+    font-weight: 600;
+}
+
+.results-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Answer Review Screen */
+.review-header {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.review-content {
+    background: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.review-question {
+    margin-bottom: 30px;
+    padding-bottom: 25px;
+    border-bottom: 2px solid #f8f9fa;
+}
+
+.review-question:last-child {
+    border-bottom: none;
+}
+
+.review-question h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.review-answer {
+    margin-bottom: 10px;
+}
+
+.user-answer {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+.correct-answer {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.answer-status {
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.9em;
+    font-weight: bold;
+    margin-left: 10px;
+}
+
+.status-correct {
+    background: #d4edda;
+    color: #155724;
+}
+
+.status-incorrect {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .instructions-card,
+    .quiz-content,
+    .results-card {
+        padding: 20px;
+    }
+    
+    .quiz-navigation {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .results-actions {
+        flex-direction: column;
+    }
+    
+    .btn {
+        width: 100%;
+    }
+    
+    .review-header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+}
